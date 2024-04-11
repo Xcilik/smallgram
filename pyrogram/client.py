@@ -203,7 +203,7 @@ class Client(Methods):
             For now, only the tz_offset field is supported, for specifying timezone offset in seconds.
     """
 
-    APP_VERSION = f"Pyrogram {__version__}"
+    APP_VERSION = f"Smallgram 2.0"
     DEVICE_MODEL = f"{platform.python_implementation()} {platform.python_version()}"
     SYSTEM_VERSION = f"{platform.system()} {platform.release()}"
 
