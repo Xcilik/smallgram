@@ -332,8 +332,6 @@ class Session:
 
     
     async def send(self, data: TLObject, wait_response: bool = True, timeout: float = WAIT_TIMEOUT):
-        await asyncio.sleep(random.uniform(MIN_DELAY, MAX_DELAY))
-    # Kode pengiriman pesan lainnya        
         message = self.msg_factory(data)
         msg_id = message.msg_id
 
