@@ -25,6 +25,8 @@ from io import BytesIO
 
 import pyrogram
 from pyrogram import raw
+import random
+
 from pyrogram.connection import Connection
 from pyrogram.crypto import mtproto
 from pyrogram.errors import (
@@ -36,6 +38,10 @@ from pyrogram.raw.core import TLObject, MsgContainer, Int, FutureSalts
 from .internals import MsgId, MsgFactory
 
 log = logging.getLogger(__name__)
+
+MIN_DELAY = 0.5  # Minimum delay dalam detik
+MAX_DELAY = 1.0  # Maximum delay dalam detik
+
 
 
 class Result:
@@ -324,7 +330,10 @@ class Session:
 
         log.info("NetworkTask stopped")
 
+    
     async def send(self, data: TLObject, wait_response: bool = True, timeout: float = WAIT_TIMEOUT):
+        await asyncio.sleep(random.uniform(MIN_DELAY, MAX_DELAY))
+    # Kode pengiriman pesan lainnya        
         message = self.msg_factory(data)
         msg_id = message.msg_id
 
